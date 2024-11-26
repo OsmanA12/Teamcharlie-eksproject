@@ -11,7 +11,7 @@ jobs:
 
         - name: Build docker file
           run: |
-            docker build -t eks-2048
+            docker build -t eks-2048 .
 
         - name: Push docker image to ECR
           run: |
@@ -21,7 +21,7 @@ jobs:
             docker tag 2048-app:latest ${{ secrets.ECR_REGISTRY }}/2048-app:latest
             docker push ${{ secrets.ECR_REGISTRY }}/2048-app:latest
 
-            
+
 
              
            
