@@ -25,7 +25,7 @@ jobs:
             aws ecr get-login-password --region ${{ secrets.AWS_REGION }} | \
             docker login --username AWS --password-stdin ${{ secrets.ECR_REGISTRY }}
             docker build -t 2048-app .
-            docker tag 2048-app:latest ${{ secrets.ECR_REGISTRY }}/2048-app:latest
+            docker tag 2048-app:latest${{ secrets.ECR_REGISTRY }}/2048-app:latest
             docker push ${{ secrets.ECR_REGISTRY }}/2048-app:latest
 
 
