@@ -1,3 +1,4 @@
 .sass-cache/
 .terraform/
-.terraform.lock.hcl 
+.terraform.lock.hcl .terraform/
+.terraform.lock.hcl
