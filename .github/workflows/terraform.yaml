@@ -14,7 +14,9 @@ jobs:
 
    # Checkov
        - name: Run security scan with checkov
-         uses: bridgecrewio/checkov-action@v12
+        uses: bridgecrewio/checkov-action@v12
+        permissions:  
+          contents: read
          with:
            directory: .
 
