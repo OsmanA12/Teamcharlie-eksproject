@@ -9,4 +9,16 @@ terraform {
 
 provider "aws" {
   # Configuration options
+} 
+
+#S3
+
+resource "aws_s3_bucket" "example" {
+  bucket = "2048-bucket"
+
+  tags = {
+    Name        = "My bucket"
+    Environment = "Dev"
+  }
 }
+

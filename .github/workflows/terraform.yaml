@@ -1,0 +1,52 @@
+name: Terraform CICD workflow
+
+
+on: [push]
+
+
+jobs:
+   build:
+       runs-on: ubuntu-latest
+       steps:
+       - name: checkout code
+         uses: actions/checkout@v2
+
+
+   # Checkov
+       - name: Run security scan with checkov
+         uses: bridgecrewio/checkov-action@v12
+         with:
+           directory: .
+
+
+    # AWS Credientials
+       - name: AWS Log in
+         uses: aws-actions/configure-aws-credentials@v2
+         with:
+           aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+           aws-region: ${{ secrets.AWS_REGION }}
+
+
+          
+    # Terraform
+       - name: intialise provider
+         run: |
+           cd terraform
+            terraform init
+
+
+ 
+       - name: planning our terraform
+         run: |
+           cd terraform
+           terraform plan
+      
+       - name: applying our terraform
+         run: |
+           cd terraform
+           terraform apply
+
+
+
+
