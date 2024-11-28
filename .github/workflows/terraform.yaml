@@ -5,18 +5,22 @@ on: [workflow_dispatch]
 
 
 jobs:
-   build:
+   terraform:
        runs-on: ubuntu-latest
+       permissions: 
+        contents: read
+
        steps:
        - name: checkout code
          uses: actions/checkout@v2
+
+        
+          
 
 
    # Checkov
        - name: Run security scan with checkov
          uses: bridgecrewio/checkov-action@v12
-         permissions:  
-            contents: read
          with:
           directory: .
 
