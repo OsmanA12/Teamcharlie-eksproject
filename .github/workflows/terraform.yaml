@@ -1,7 +1,7 @@
 name: Terraform CICD workflow
 
 
-on: [push]
+on: [workflow_dispatch]
 
 
 jobs:
@@ -14,11 +14,11 @@ jobs:
 
    # Checkov
        - name: Run security scan with checkov
-        uses: bridgecrewio/checkov-action@v12
-        permissions:  
-          contents: read
+         uses: bridgecrewio/checkov-action@v12
+         permissions:  
+            contents: read
          with:
-           directory: .
+          directory: .
 
 
     # AWS Credientials
