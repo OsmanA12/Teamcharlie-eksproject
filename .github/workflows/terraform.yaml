@@ -47,7 +47,7 @@ jobs:
        - name: applying our terraform
          run: |
            cd terraform
-           terraform apply
+           terraform apply -auto-approve
 
 
 
